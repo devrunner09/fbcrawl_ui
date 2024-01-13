@@ -1,4 +1,6 @@
 import streamlit as st 
+import requests
+import json 
 
 st.title("MYLA - FBCrawl")
 
@@ -7,11 +9,12 @@ with st.sidebar:
     with st.form("facebook_account_form"):
         email = st.text_input('Email')
         password = st.text_input('Password')
+        secret_code = st.text_input('Secret Code')
 
         # Every form must have a submit button.
         submitted = st.form_submit_button("Use this account")
         if submitted:
-            st.write("Using Email: {}. Password: {}".format(email, password))
+            st.write("Using \nEmail: {}\nPassword: {}\nSecret Code: {}".format(email, password, secret_code))
 
 features = ["User Profile", 
             "Fanpage",
@@ -19,6 +22,8 @@ features = ["User Profile",
             "Post with link"
             ]
 
+
+api_url = 'http://35.76.109.148:5001/crawl'
 
 # Insert containers separated into tabs:
 craw_user_profile_tab, craw_fanpage_tab, craw_group_tab, \
@@ -61,10 +66,34 @@ with craw_user_profile_tab:
 
     crawl_user_profile_button = st.button("Start Crawl", type="primary")
     if crawl_user_profile_button:
-        print(user_profiles)
-        print(type(user_profiles))
+        data_post = {
 
-        print(type(user_post_scrolls))
+            "feature" : "user_profile",
+            "username" : email,
+            "password" : password, 
+            "secret_code": secret_code,
+            "user_profile_links" : user_profiles, 
+
+            "config" : {
+                "scrape_users" : True,
+                "user_profile_modules": user_modules_need_to_crawl, 
+                "user_post_scrolls": user_post_scrolls,
+                "user_reels_scrolls": user_reels_scrolls,
+                "user_friends_scrolls": user_friends_scrolls,
+                "user_photos_scrolls":user_photos_scrolls,
+                "user_videos_scrolls": user_videos_scrolls,
+                "user_check_ins_scrolls":user_check_ins_scrolls,
+                "user_events_scrolls" : user_events_scrolls,
+                "user_reviews_scrolls": user_reviews_scrolls, 
+                "scrape_user_post_reactions": scrape_user_post_reactions,
+                "scrape_user_post_comments": scrape_user_post_comments,
+                "scrape_user_photos_comments": scrape_user_photos_comments, 
+                "scrape_user_videos_comments": scrape_user_videos_comments
+            }
+        }
+        print(data_post)
+        response = requests.post(api_url, data=json.dumps(data_post))
+        st.text(response)
 
 with craw_fanpage_tab:
 
@@ -91,6 +120,31 @@ with craw_fanpage_tab:
     scrape_page_photos_comments = st.toggle("Lấy comments of page photos", value=False)  # If True then scrapes comments for Photos
     scrape_page_videos_comments = st.toggle("Lấy comments of page videos", value=False)  # If True then scrapes comments for Videos
 
+    crawl_fanpage_button = st.button("Start Crawl Fanpage", type="primary")
+    if crawl_fanpage_button:
+        data_post = {
+            "feature" : "fanpage",
+            "username" : email,
+            "password" : password, 
+            "secret_code": secret_code,
+            "fanpage_links" : fanpage_profiles, 
+
+            "config" : {
+                "scrape_pages" : True,
+                "page_modules" : page_modules_need_to_crawl,
+                "page_post_scrolls" : page_post_scrolls,  
+                "page_photos_scrolls" : page_photos_scrolls,  
+                "page_videos_scrolls" : page_videos_scrolls, 
+                "scrape_page_post_reactions" : scrape_page_post_reactions,  
+                "scrape_page_post_comments" : scrape_page_post_comments,  
+                "scrape_page_photos_comments" : scrape_page_photos_comments, 
+                "scrape_page_videos_comments" : scrape_page_videos_comments
+            }
+        }
+        print(data_post)
+        response = requests.post(api_url, data=json.dumps(data_post))
+        st.text(response)
+
 with craw_group_tab:
     
     group_profiles = st.text_area(
@@ -115,6 +169,27 @@ with craw_group_tab:
     scrape_group_post_comments = st.toggle("Lấy comments of group posts", value=True)  # If True then scrapes comments for posts
     scrape_group_post_reactions = st.toggle("Lấy reactions of group posts", value=True)  # If True then scrapes reactions for posts
 
+    crawl_group_button = st.button("Start Crawl Group", type="primary")
+    if crawl_group_button:
+        data_post = {
+            "feature" : "group",
+            "username" : email,
+            "password" : password, 
+            "secret_code": secret_code,
+            "group_links" : group_profiles, 
+
+            "config" : {
+                "scrape_groups" : True,
+                "group_modules" : group_modules,
+                "group_post_scrolls" : group_post_scrolls, 
+                "group_photos_scrolls" : group_photos_scrolls, 
+                "group_videos_scrolls" : group_videos_scrolls, 
+                "group_members_scrolls" : group_members_scrolls,
+                "scrape_group_post_comments" : scrape_group_post_comments , 
+                "scrape_group_post_reactions" : scrape_group_post_reactions  
+            }
+        }
+    
 with craw_post_with_link_tab:
 
     post_profiles = st.text_area(
