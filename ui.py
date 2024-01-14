@@ -189,6 +189,9 @@ with craw_group_tab:
                 "scrape_group_post_reactions" : scrape_group_post_reactions  
             }
         }
+        print(data_post)
+        response = requests.post(api_url, data=json.dumps(data_post))
+        st.text(response)
     
 with craw_post_with_link_tab:
 
