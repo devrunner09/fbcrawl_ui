@@ -180,7 +180,7 @@ with craw_group_tab:
 
             "config" : {
                 "scrape_groups" : True,
-                "group_modules" : group_modules,
+                "group_modules" : group_modules_need_to_crawl,
                 "group_post_scrolls" : group_post_scrolls, 
                 "group_photos_scrolls" : group_photos_scrolls, 
                 "group_videos_scrolls" : group_videos_scrolls, 
