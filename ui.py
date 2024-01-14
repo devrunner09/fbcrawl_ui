@@ -7,9 +7,9 @@ st.title("MYLA - FBCrawl")
 with st.sidebar:
     st.text("Enter facebook account.")
     with st.form("facebook_account_form"):
-        email = st.text_input('Email')
-        password = st.text_input('Password')
-        secret_code = st.text_input('Secret Code')
+        email = st.text_input('Email', value="sadieburger6252@hotmail.com")
+        password = st.text_input('Password', value="fnharfqis4y")
+        secret_code = st.text_input('Secret Code', value="LETXX7BPICERC7JZNAUHKIXWZXHPMXMC")
 
         # Every form must have a submit button.
         submitted = st.form_submit_button("Use this account")
@@ -23,7 +23,7 @@ features = ["User Profile",
             ]
 
 
-api_url = 'http://35.76.109.148:5001/crawl'
+api_url = 'http://35.76.109.148:5000/crawl'
 
 # Insert containers separated into tabs:
 craw_user_profile_tab, craw_fanpage_tab, craw_group_tab, \
