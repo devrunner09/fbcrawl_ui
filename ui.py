@@ -7,9 +7,9 @@ st.title("MYLA - FBCrawl")
 with st.sidebar:
     st.text("Enter facebook account.")
     with st.form("facebook_account_form"):
-        email = st.text_input('Email', value="sadieburger6252@hotmail.com")
-        password = st.text_input('Password', value="fnharfqis4y")
-        secret_code = st.text_input('Secret Code', value="LETXX7BPICERC7JZNAUHKIXWZXHPMXMC")
+        email = st.text_input('Email', value="sadieclemens8241@hotmail.com")
+        password = st.text_input('Password', value="vmloheprdxk")
+        secret_code = st.text_input('Secret Code', value="652DPA7CIXTBUQ4S5UPNDI7X6TZKC4RE")
 
         # Every form must have a submit button.
         submitted = st.form_submit_button("Use this account")
