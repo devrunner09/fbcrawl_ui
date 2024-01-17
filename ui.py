@@ -45,7 +45,7 @@ with craw_user_profile_tab:
     )
 
     min_user_scroll = 0
-    max_user_scroll = 150
+    max_user_scroll = 70
 
     tabl1_col1, tab1_col2 = st.columns(2)
     with tabl1_col1:
@@ -109,7 +109,7 @@ with craw_fanpage_tab:
     )
 
     min_page_scroll = 0
-    max_page_scroll = 200
+    max_page_scroll = 100
 
     page_post_scrolls = st.number_input("Page's post scrolls (5-6 posts/ 1 scroll)", min_value=min_page_scroll, max_value=max_page_scroll, value=150)  # 1 scroll fetches 5-6 posts.
     page_photos_scrolls = st.number_input("Page's photos scrolls (7-8 photos/ 1 scroll)", min_value=min_page_scroll, max_value=max_page_scroll, value=0)  # 1 scroll fetches 7-8 photos.
@@ -159,7 +159,7 @@ with craw_group_tab:
     )
 
     min_group_scroll = 0
-    max_group_scroll = 200 
+    max_group_scroll = 100 
 
     group_post_scrolls = st.number_input("Group's post scrolls (5-6 posts/ 1 scroll)", min_value=min_group_scroll, max_value=max_group_scroll, value=150)  # 1 scroll fetches 5-6 posts.
     group_photos_scrolls = st.number_input("Group's photos scrolls (8 photos/ 1 scroll)", min_value=min_group_scroll, max_value=max_group_scroll, value=0)  # 1 scroll fetches 8 photos.
