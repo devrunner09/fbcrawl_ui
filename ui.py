@@ -111,7 +111,7 @@ with craw_fanpage_tab:
     min_page_scroll = 0
     max_page_scroll = 100
 
-    page_post_scrolls = st.number_input("Page's post scrolls (5-6 posts/ 1 scroll)", min_value=min_page_scroll, max_value=max_page_scroll, value=150)  # 1 scroll fetches 5-6 posts.
+    page_post_scrolls = st.number_input("Page's post scrolls (5-6 posts/ 1 scroll)", min_value=min_page_scroll, max_value=max_page_scroll, value=30)  # 1 scroll fetches 5-6 posts.
     page_photos_scrolls = st.number_input("Page's photos scrolls (7-8 photos/ 1 scroll)", min_value=min_page_scroll, max_value=max_page_scroll, value=0)  # 1 scroll fetches 7-8 photos.
     page_videos_scrolls = st.number_input("Page's videos scrolls (7-8 videos/ 1 scroll)", min_value=min_page_scroll, max_value=max_page_scroll, value=0)  # 1 scroll fetches 7-8 videos.
 
@@ -161,7 +161,7 @@ with craw_group_tab:
     min_group_scroll = 0
     max_group_scroll = 100 
 
-    group_post_scrolls = st.number_input("Group's post scrolls (5-6 posts/ 1 scroll)", min_value=min_group_scroll, max_value=max_group_scroll, value=150)  # 1 scroll fetches 5-6 posts.
+    group_post_scrolls = st.number_input("Group's post scrolls (5-6 posts/ 1 scroll)", min_value=min_group_scroll, max_value=max_group_scroll, value=30)  # 1 scroll fetches 5-6 posts.
     group_photos_scrolls = st.number_input("Group's photos scrolls (8 photos/ 1 scroll)", min_value=min_group_scroll, max_value=max_group_scroll, value=0)  # 1 scroll fetches 8 photos.
     group_videos_scrolls = st.number_input("Group's videos scrolls (8 videos/ 1 scroll)", min_value=min_group_scroll, max_value=max_group_scroll, value=0)  # 1 scroll fetches 8 videos.
     group_members_scrolls = st.number_input("Group's members scrolls (10 members/ 1 scroll)", min_value=min_group_scroll, max_value=max_group_scroll, value=0)  # 1 scroll fetches 10 members.
