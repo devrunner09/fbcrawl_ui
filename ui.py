@@ -23,7 +23,7 @@ features = ["User Profile",
             ]
 
 
-api_url = 'http://35.76.109.148:5000/crawl'
+api_url = 'http://54.238.137.100:5000/crawl'
 
 # Insert containers separated into tabs:
 craw_user_profile_tab, craw_fanpage_tab, craw_group_tab, \
